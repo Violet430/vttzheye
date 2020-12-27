@@ -1,17 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-  <div class=" w-14 h-14 bg-green-400"></div>
+  <div class="w-full">
+    <column-list :list="list"></column-list>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import ColumnList, { ColumnProps } from "./components/ColumnList.vue";
+
+const testData: ColumnProps[] = [
+  {
+    id: 1,
+    title: "test1的专栏",
+    description: "这是一个专栏，名字是专栏，有一段不短的简介，可以自己来定制",
+    avatar: "https://vue3js.cn/docs/logo.png",
+  },
+  {
+    id: 2,
+    title: "test2的专栏",
+    description: "这是一个专栏，名字是专栏，有一段不短的简介，可以自己来定制",
+    avatar: "https://vue3js.cn/docs/logo.png",
+  },
+  {
+    id: 1,
+    title: "test1的专栏",
+    description: "这是一个专栏，名字是专栏，有一段不短的简介，可以自己来定制",
+    avatar: "https://vue3js.cn/docs/logo.png",
+  },
+  {
+    id: 2,
+    title: "test2的专栏",
+    description: "这是一个专栏，名字是专栏，有一段不短的简介，可以自己来定制",
+    avatar: "https://vue3js.cn/docs/logo.png",
+  },
+];
 
 export default defineComponent({
   name: "App",
   components: {
-    HelloWorld,
+    ColumnList,
+  },
+  setup() {
+    return {
+      list: testData,
+    };
   },
 });
 </script>
