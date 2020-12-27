@@ -1,20 +1,34 @@
 <template>
-  <div class="grid grid-cols-4 gap-10">
-    <div v-for="column in list" :key="column.id">
-      <img :src="column.avatar" :alt="column.title" />
-      <h5>{{ column.title }}</h5>
-      <p>{{ column.description }}</p>
-      <a href="#">进入专栏</a>
+  <div class="grid grid-cols-3 w-3/4 mx-auto gap-10">
+    <div
+      v-for="column in columnList"
+      :key="column.id"
+      class="border-2 shadow-md rounded-lg pb-2"
+    >
+      <img
+        :src="column.avatar"
+        :alt="column.title"
+        class="w-1/4 mx-auto rounded-full"
+      />
+      <h5 class="font-bold text-xl mb-2">{{ column.title }}</h5>
+      <p class="text-gray-700 text-base text-left px-2">
+        {{ column.description }}
+      </p>
+      <a
+        href="#"
+        class="px-2.5 py-1 text-blue-600 blod text-sm rounded-md inline-block border border-blue-600"
+        >进入专栏</a
+      >
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { computed, defineComponent, PropType } from "vue";
 export interface ColumnProps {
   id: number;
   title: string;
-  avatar: string;
+  avatar?: string;
   description: string;
 }
 export default defineComponent({
@@ -24,6 +38,19 @@ export default defineComponent({
       type: Array as PropType<ColumnProps[]>,
       required: true,
     },
+  },
+  setup(props) {
+    const columnList = computed(() => {
+      return props.list.map((column) => {
+        if (!column.avatar) {
+          column.avatar = require("@/assets/defaultColumn.png");
+        }
+        return column;
+      });
+    });
+    return {
+      columnList,
+    };
   },
 });
 </script>
