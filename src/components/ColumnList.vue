@@ -36,12 +36,12 @@ export default defineComponent({
   props: {
     list: {
       type: Array as PropType<ColumnProps[]>,
-      required: true,
-    },
+      required: true
+    }
   },
   setup(props) {
     const columnList = computed(() => {
-      return props.list.map((column) => {
+      return props.list.map(column => {
         if (!column.avatar) {
           column.avatar = require("@/assets/defaultColumn.png");
         }
@@ -49,8 +49,8 @@ export default defineComponent({
       });
     });
     return {
-      columnList,
+      columnList
     };
-  },
+  }
 });
 </script>
