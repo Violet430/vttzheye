@@ -11,14 +11,16 @@
         class="w-1/4 mx-auto rounded-full"
       />
       <h5 class="font-bold text-xl mb-2">{{ column.title }}</h5>
-      <p class="text-gray-700 text-base text-left px-2">
+      <p
+        class="text-gray-700 text-base text-left px-2 h-24 mb-0.5 overflow-ellipsis"
+      >
         {{ column.description }}
       </p>
       <a
         href="#"
-        class="px-2.5 py-1 text-blue-600 blod text-sm rounded-md inline-block border border-blue-600"
-        >进入专栏</a
-      >
+        class="px-2.5 py-1 text-blue-600 blod text-sm rounded-md border border-blue-600"
+        >进入专栏
+      </a>
     </div>
   </div>
 </template>
